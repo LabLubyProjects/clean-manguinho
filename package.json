@@ -1,0 +1,7 @@
+{
+  "name": "clean-arch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Breno Vergilio <bjvergilio47@gmail.com>",
+  "license": "MIT"
+}
