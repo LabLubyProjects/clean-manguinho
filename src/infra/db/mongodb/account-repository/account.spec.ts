@@ -1,7 +1,7 @@
 import { MongoHelper } from '../helpers/mongo-helper'
 import { AccountMongoRepository } from './account'
 
-describe('Account Mongo Reposito/rules/restrict-template-expressionsry', () => {
+describe('Account Mongo Repository', () => {
   beforeAll(async () => {
     await MongoHelper.connect(`${process.env.MONGO_URL}`)
   })
