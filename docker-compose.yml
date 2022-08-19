@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:4.0.3
+    restart: always
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+    
+  api:
+    container_name: clean-api
+    build: .
+    image: clean-api
+    restart: always
+    command: yarn start
+    volumes:
+      - ./dist:/usr/src/clean-node-api/dist
+    links:
+      - mongo
+    ports:
+      - "5050:5050"
