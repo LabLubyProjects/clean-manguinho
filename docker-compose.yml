@@ -11,12 +11,14 @@ services:
     
   api:
     container_name: clean-api
-    build: .
-    image: clean-api
+    image: node:16.17.0
+    working_dir: /usr/src/clean-api
     restart: always
-    command: yarn start
+    command: bash -c "yarn install --production --frozen-lockfile && yarn start"
     volumes:
-      - ./dist:/usr/src/clean-node-api/dist
+      - ./dist/:/usr/src/clean-api/dist/
+      - ./package.json:/usr/src/clean-api/package.json
+      - ./yarn.lock:/usr/src/clean-api/yarn.lock
     links:
       - mongo
     ports:
