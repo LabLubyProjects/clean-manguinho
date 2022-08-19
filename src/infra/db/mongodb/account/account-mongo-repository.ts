@@ -1,4 +1,4 @@
-import { Document, ObjectId } from 'mongodb'
+import { ObjectId } from 'mongodb'
 import { AddAccountRepository } from '../../../../data/protocols/db/account/add-account-repository'
 import { LoadAccountByEmailRepository } from '../../../../data/protocols/db/account/load-account-by-email-repository'
 import { UpdateAccessTokenRepository } from '../../../../data/protocols/db/account/update-access-token-repository'
@@ -15,7 +15,7 @@ export class AccountMongoRepository implements AddAccountRepository, LoadAccount
 
   async loadByEmail (email: string): Promise<AccountModel | null> {
     const accountCollection = MongoHelper.getCollection('accounts')
-    const account = await accountCollection.findOne<Document>({ email })
+    const account = await accountCollection.findOne<any>({ email })
     if (account) {
       return MongoHelper.map(account?._id, account)
     }
