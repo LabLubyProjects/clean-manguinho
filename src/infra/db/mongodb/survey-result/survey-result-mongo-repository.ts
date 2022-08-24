@@ -6,16 +6,16 @@ export class SurveyResultMongoRepository implements SaveSurveyResultRepository {
   async save (data: SaveSurveyResultModel): Promise<SurveyResultModel> {
     const surveyResultCollection = MongoHelper.getCollection('surveyResults')
     const survey = await surveyResultCollection.findOne<any>({
-      surveyId: new ObjectId(data.surveyId),
-      accountId: new ObjectId(data.accountId)
+      surveyId: data.surveyId,
+      accountId: data.accountId
     })
 
     let id: ObjectId
 
     if (survey) {
       await surveyResultCollection.updateOne({
-        surveyId: new ObjectId(data.surveyId),
-        accountId: new ObjectId(data.accountId)
+        surveyId: data.surveyId,
+        accountId: data.accountId
       },
       {
         $set: {
