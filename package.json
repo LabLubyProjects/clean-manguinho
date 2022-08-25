@@ -15,6 +15,7 @@
     "@types/supertest": "^2.0.12",
     "@types/validator": "^13.7.5",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.22.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-config-standard-with-typescript": "^22.0.0",
@@ -34,6 +35,7 @@
   "scripts": {
     "start": "node dist/main/server.js",
     "build": "rimraf dist && tsc -p tsconfig-build.json",
+    "postbuild": "copyfiles -u 1 public/**/* dist/static",
     "up": "yarn build && docker-compose up -d",
     "stop": "docker-compose down",
     "test": "jest --passWithNoTests --silent --noStackTrace --coverage=false --runInBand",
