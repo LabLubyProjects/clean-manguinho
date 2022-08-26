@@ -21,6 +21,10 @@ describe('Survey Mongo Repository', () => {
     await accountCollection.deleteMany({})
   })
 
+  afterAll(async () => {
+    await MongoHelper.disconnect()
+  })
+
   const makeSut = (): SurveyMongoRepository => {
     return new SurveyMongoRepository()
   }
